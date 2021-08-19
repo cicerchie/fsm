@@ -21,6 +21,9 @@
     "javascript state machine",
     "state machine"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "index.js",
   "svelte": "index.js",
   "types": "index.d.ts",
