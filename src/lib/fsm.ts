@@ -128,6 +128,7 @@ export const newFSM = (params: FSMParams): FSM => {
             runTransition(nextStateInfo, asyncAction.onDone, {
               event: "invoke.onDone",
               data: result,
+              invokeEvent: eventData,
             });
           }
         })
@@ -141,6 +142,7 @@ export const newFSM = (params: FSMParams): FSM => {
             runTransition(nextStateInfo, asyncAction.onError, {
               event: "invoke.onError",
               data: reason,
+              invokeEvent: eventData,
             });
           }
         });
