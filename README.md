@@ -58,6 +58,7 @@ You can see how it's used in [@cicerchie/svelte-swr](https://github.com/cicerchi
 [x] Async actions with onDone/onError
 [-] Typescript ready (still incomplete and so many `any`!)
 [ ] Docs (HELP!)
+[ ] Tests (HELP!)
 
 ## Motivation
 
