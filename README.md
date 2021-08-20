@@ -39,6 +39,22 @@ TBD
 npm install -D @cicerchie/fsm
 ```
 
+## Features
+
+[x] Finite states (non-nested)
+[x] Initial state
+[x] Transitions (object)
+[x] Transitions (string target)
+[x] Delayed transitions
+[x] Context
+[x] Entry actions
+[x] Exit actions
+[x] Transition actions
+[x] Parameterized actions
+[x] Async actions with onDone/onError
+[-] Typescript ready (still incomplete and so many `any`!)
+[ ] Docs (HELP!)
+
 ## Motivation
 
 This project was born after looking for a good typed library for massive use in low-end devices.
