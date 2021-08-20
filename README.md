@@ -45,20 +45,20 @@ You can see how it's used in [@cicerchie/svelte-swr](https://github.com/cicerchi
 
 ## Features
 
-[x] Finite states (non-nested)
-[x] Initial state
-[x] Transitions (object)
-[x] Transitions (string target)
-[x] Delayed transitions
-[x] Context
-[x] Entry actions
-[x] Exit actions
-[x] Transition actions
-[x] Parameterized actions
-[x] Async actions with onDone/onError
-[-] Typescript ready (still incomplete and so many `any`!)
-[ ] Docs (HELP!)
-[ ] Tests (HELP!)
+- [x] Finite states (non-nested)
+- [x] Initial state
+- [x] Transitions (object)
+- [x] Transitions (string target)
+- [x] Delayed transitions
+- [x] Context
+- [x] Entry actions
+- [x] Exit actions
+- [x] Transition actions
+- [x] Parameterized actions
+- [x] Async actions with onDone/onError
+- [-] Typescript ready (still incomplete and so many `any`!)
+- [ ] Docs (HELP!)
+- [ ] Tests (HELP!)
 
 ## Motivation
 
