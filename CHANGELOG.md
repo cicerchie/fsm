@@ -1,3 +1,10 @@
+## [0.0.4](https://github.com/cicerchie/fsm/compare/v0.0.3...v0.0.4) (2021-08-20)
+
+
+### Bug Fixes
+
+* simplify invoke's onDone & onError types ([997c1c9](https://github.com/cicerchie/fsm/commit/997c1c98cf938aef9a9961f7b73471b19e2347e1))
+
 ## [0.0.3](https://github.com/cicerchie/fsm/compare/v0.0.2...v0.0.3) (2021-08-20)
 
 
