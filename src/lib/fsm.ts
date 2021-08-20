@@ -1,26 +1,20 @@
-interface FSMMachineState {
-  entry?: (ctx: any, event?: any) => FSMContext | void;
-  exit?: (ctx: any, event: any) => FSMContext | void;
-  invoke?: {
-    src: (ctx: any, event: any, abortCtrl: AbortController) => Promise<any>;
-    onDone: {
-      target: string;
-      action: (ctx: any, event: any) => FSMContext;
-    };
-    onError: {
-      target: string;
-      action: (ctx: any, event: any) => FSMContext;
-    };
-  };
-  on?: { [key: string]: FSMOnHandler };
-}
-
 interface FSMOnHandlerValue {
   target: string;
   action?: (ctx: any, event: any) => FSMContext | void;
 }
 
 type FSMOnHandler = FSMOnHandlerValue | string | null;
+
+interface FSMMachineState {
+  entry?: (ctx: any, event?: any) => FSMContext | void;
+  exit?: (ctx: any, event: any) => FSMContext | void;
+  invoke?: {
+    src: (ctx: any, event: any, abortCtrl: AbortController) => Promise<any>;
+    onDone: FSMOnHandlerValue;
+    onError: FSMOnHandlerValue;
+  };
+  on?: { [key: string]: FSMOnHandler };
+}
 
 export interface FSMMachineConfig {
   initial: string;
