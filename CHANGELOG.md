@@ -1,3 +1,10 @@
+## [0.0.3](https://github.com/cicerchie/fsm/compare/v0.0.2...v0.0.3) (2021-08-20)
+
+
+### Bug Fixes
+
+* pass invoked event data to onDone & onError callbacks ([a026c41](https://github.com/cicerchie/fsm/commit/a026c414a1dff12eefb2335e49b8b365c97bf548))
+
 ## [0.0.2](https://github.com/cicerchie/fsm/compare/v0.0.1...v0.0.2) (2021-08-20)
 
 
