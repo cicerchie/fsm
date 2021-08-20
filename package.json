@@ -1,6 +1,6 @@
 {
   "name": "@cicerchie/fsm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A fast and carefree Typescript state machine.",
   "author": "https://github.com/cicerchia",
   "license": "MIT",
