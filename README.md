@@ -39,6 +39,14 @@ TBD
 npm install -D @cicerchie/fsm
 ```
 
+## Motivation
+
+This project was born after looking for a good typed library for massive use in low-end devices.
+
+Neither [Robot](https://github.com/matthewp/robot) (it is not written in Typescript) nor [XState](https://github.com/statelyai/xstate) (too big) nor its "mini version" [@xstate/fsm](https://xstate.js.org/docs/packages/xstate-fsm/) (lacking essential features) did satisfy us.
+
+By chance we found [the great article](https://imfeld.dev/writing/simple_state_machines) by [@dimfeld](https://github.com/dimfeld) that lit the way: what a golden boy!
+
 ## Changelog
 
 Is automagically updated with each release and [you can read it here](https://github.com/cicerchie/fsm/blob/master/CHANGELOG.md).
