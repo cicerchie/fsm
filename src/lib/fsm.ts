@@ -1,12 +1,40 @@
-interface FSMConfig {
+interface FSMMachineState {
+  entry?: (ctx: any, event?: any) => FSMContext | void;
+  exit?: (ctx: any, event: any) => FSMContext | void;
+  invoke?: {
+    src: (ctx: any, event: any, abortCtrl: AbortController) => Promise<any>;
+    onDone: {
+      target: string;
+      action: (ctx: any, event: any) => FSMContext;
+    };
+    onError: {
+      target: string;
+      action: (ctx: any, event: any) => FSMContext;
+    };
+  };
+  on?: { [key: string]: FSMOnHandler };
+}
+
+interface FSMOnHandlerValue {
+  target: string;
+  action?: (ctx: any, event: any) => FSMContext | void;
+}
+
+type FSMOnHandler = FSMOnHandlerValue | string | null;
+
+export interface FSMMachineConfig {
   initial: string;
-  on: any;
-  states: any;
+  on?: { [key: string]: FSMOnHandler };
+  states: { [key: string]: FSMMachineState };
+}
+
+interface FSMContext {
+  [key: string]: any;
 }
 
 interface FSMParams {
-  config: FSMConfig;
-  context: any;
+  config: FSMMachineConfig;
+  context: FSMContext;
   receiveFn: (state: string, ctx: any) => void;
 }
 
@@ -19,13 +47,18 @@ export const newFSM = (params: FSMParams): FSM => {
   let currentCtx = params.context;
   let currentAbortController;
 
-  function send(event, data) {
+  if (params.config.states[currentState].entry) {
+    const newCtx = params.config.states[currentState].entry(currentCtx);
+    if (newCtx) currentCtx = newCtx;
+  }
+
+  function send(event: string, data: any) {
     const stateInfo = params.config.states[currentState];
 
     let next = (stateInfo.on || {})[event];
     if (!next) {
       // No transition for this event in the current state. Check the global handlers.
-      next = params.config.on[event];
+      next = (params.config.on || {})[event];
     }
 
     if (!next) {
@@ -36,8 +69,13 @@ export const newFSM = (params: FSMParams): FSM => {
     runTransition(stateInfo, next, { event, data });
   }
 
-  function runTransition(stateInfo, transition, eventData) {
-    const targetState = transition.target;
+  function runTransition(
+    stateInfo: FSMMachineState,
+    transition: FSMOnHandler,
+    eventData: any
+  ) {
+    const targetState =
+      typeof transition === "string" ? transition : transition.target;
 
     if (targetState) {
       // We're transitioning to another state, so try to abort the action if it hasn't finished running yet.
@@ -51,7 +89,7 @@ export const newFSM = (params: FSMParams): FSM => {
     }
 
     // Run the transition's action, if it has one.
-    if (transition.action) {
+    if (typeof transition !== "string" && transition.action) {
       const newCtx = transition.action(currentCtx, eventData);
       if (newCtx) currentCtx = newCtx;
     }
