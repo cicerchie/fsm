@@ -16,7 +16,7 @@ interface FSM {
 
 export const newFSM = (params: FSMParams): FSM => {
   let currentState = params.config.initial;
-  let ctx = params.context;
+  let currentCtx = params.context;
   let currentAbortController;
 
   function send(event, data) {
@@ -45,20 +45,20 @@ export const newFSM = (params: FSMParams): FSM => {
 
       // Run the exit action
       if (stateInfo.exit) {
-        const newCtx = stateInfo.exit(ctx, eventData);
-        if (newCtx) ctx = newCtx;
+        const newCtx = stateInfo.exit(currentCtx, eventData);
+        if (newCtx) currentCtx = newCtx;
       }
     }
 
     // Run the transition's action, if it has one.
     if (transition.action) {
-      const newCtx = transition.action(ctx, eventData);
-      if (newCtx) ctx = newCtx;
+      const newCtx = transition.action(currentCtx, eventData);
+      if (newCtx) currentCtx = newCtx;
     }
 
     if (!targetState) {
       // If the transition has no target, then it's just an action, so return.
-      params.receiveFn(currentState, ctx);
+      params.receiveFn(currentState, currentCtx);
       return;
     }
 
@@ -68,8 +68,8 @@ export const newFSM = (params: FSMParams): FSM => {
     // And then run the next state's entry action, if there is one.
     const nextStateInfo = params.config.states[currentState];
     if (nextStateInfo.entry) {
-      const newCtx = nextStateInfo.entry(ctx, eventData);
-      if (newCtx) ctx = newCtx;
+      const newCtx = nextStateInfo.entry(currentCtx, eventData);
+      if (newCtx) currentCtx = newCtx;
     }
 
     // Run the asynchronous action if there is one.
@@ -78,7 +78,7 @@ export const newFSM = (params: FSMParams): FSM => {
       // Create a new abort controller and save it.
       const abort = (currentAbortController = new AbortController());
       asyncAction
-        .src(ctx, eventData, abort)
+        .src(currentCtx, eventData, abort)
         .then((result) => {
           // If the request aborted, ignore it. This means that another event came in and we've already transitioned elsewhere.
           if (abort.signal.aborted) {
@@ -108,7 +108,7 @@ export const newFSM = (params: FSMParams): FSM => {
         });
     }
 
-    params.receiveFn(currentState, ctx);
+    params.receiveFn(currentState, currentCtx);
   }
 
   return { send };
