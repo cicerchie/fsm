@@ -2,7 +2,22 @@
 
 A fast and **carefree** Typescript state machine.<br><br>
 
-![Release](https://github.com/cicerchie/fsm/workflows/Release/badge.svg?branch=master)
+![Lastest release](https://badgen.net/github/release/cicerchie/fsm)
+![License](https://badgen.net/github/license/cicerchie/fsm)
+![Github repo dependents](https://badgen.net/github/dependents-repo/cicerchie/fsm)
+![Github pkg dependents](https://badgen.net/github/dependents-pkg/cicerchie/fsm)
+![Github open issues](https://badgen.net/github/open-issues/cicerchie/fsm)
+![Github status](https://badgen.net/github/checks/cicerchie/fsm/master/Release)
+![Bundlephobia MinZip](https://badgen.net/bundlephobia/minzip/@cicerchie/fsm)
+![Bundlephobia dependency count](https://badgen.net/bundlephobia/dependency-count/@cicerchie/fsm)
+![Snyk](https://badgen.net/snyk/cicerchie/fsm)
+![Npm version](https://badgen.net/npm/v/@cicerchie/fsm)
+![Npm DT](https://badgen.net/npm/dt/@cicerchie/fsm)
+![Npm dependents](https://badgen.net/npm/dependents/@cicerchie/fsm)
+![Npm types](https://badgen.net/npm/types/@cicerchie/fsm)
+![David DM dep](https://badgen.net/david/dep/cicerchie/fsm)
+![David DM dev-dep](https://badgen.net/david/dev/cicerchie/fsm)
+![David DM peer-dep](https://badgen.net/david/peer/cicerchie/fsm)
 
 ---
 
