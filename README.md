@@ -39,6 +39,10 @@ TBD
 npm install -D @cicerchie/fsm
 ```
 
+## Usage
+
+You can see how it's used in [@cicerchie/svelte-swr](https://github.com/cicerchie/svelte-swr) project.
+
 ## Features
 
 [x] Finite states (non-nested)
