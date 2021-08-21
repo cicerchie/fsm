@@ -1,3 +1,11 @@
+## [0.0.5](https://github.com/cicerchie/fsm/compare/v0.0.4...v0.0.5) (2021-08-21)
+
+
+### Bug Fixes
+
+* add condition guard to proceed with transition ([b1281b9](https://github.com/cicerchie/fsm/commit/b1281b9a343ff4b0982d4d1bb411f5f8c03f355a))
+* add isString helper ([a0439cb](https://github.com/cicerchie/fsm/commit/a0439cb1aca3c2e89c4893b36b2d0b9ab8150a4c))
+
 ## [0.0.4](https://github.com/cicerchie/fsm/compare/v0.0.3...v0.0.4) (2021-08-20)
 
 
