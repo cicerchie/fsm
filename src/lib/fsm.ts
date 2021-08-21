@@ -1,3 +1,5 @@
+import { isString } from "./_utils";
+
 interface FSMOnHandlerValue {
   target: string;
   action?: (ctx: any, event: any) => FSMContext | void;
@@ -68,8 +70,7 @@ export const newFSM = (params: FSMParams): FSM => {
     transition: FSMOnHandler,
     eventData: any
   ) {
-    const targetState =
-      typeof transition === "string" ? transition : transition.target;
+    const targetState = isString(transition) ? transition : transition.target;
 
     if (targetState) {
       // We're transitioning to another state, so try to abort the action if it hasn't finished running yet.
@@ -83,7 +84,7 @@ export const newFSM = (params: FSMParams): FSM => {
     }
 
     // Run the transition's action, if it has one.
-    if (typeof transition !== "string" && transition.action) {
+    if (!isString(transition) && transition.action) {
       const newCtx = transition.action(currentCtx, eventData);
       if (newCtx) currentCtx = newCtx;
     }
