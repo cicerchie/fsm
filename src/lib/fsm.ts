@@ -3,6 +3,7 @@ import { isString } from "./_utils";
 interface FSMOnHandlerValue {
   target: string;
   action?: (ctx: any, event: any) => FSMContext | void;
+  cond?: (ctx: any, event: any) => boolean;
 }
 
 type FSMOnHandler = FSMOnHandlerValue | string | null;
@@ -59,6 +60,11 @@ export const newFSM = (params: FSMParams): FSM => {
 
     if (!next) {
       // No global handler for this event, and no handler in the current state, so ignore it.
+      return;
+    }
+
+    if (!isString(next) && !next.cond?.(currentCtx, { event, data })) {
+      // The condition is false, I cannot proceed.
       return;
     }
 

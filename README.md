@@ -54,6 +54,7 @@ Is automagically updated with each release and [you can read it here](https://gi
 - [x] Entry actions
 - [x] Exit actions
 - [x] Transition actions
+- [x] Transition guards
 - [x] Parameterized actions
 - [x] Async actions with onDone/onError
 - [ ] Typescript ready (still incomplete and so many `any`!)
