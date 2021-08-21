@@ -1,4 +1,4 @@
-import { isString } from "./_utils";
+import { isString } from "./utils";
 
 interface FSMOnHandlerValue {
   target: string;
