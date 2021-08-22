@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/cicerchie/fsm/compare/v0.0.5...v0.0.6) (2021-08-22)
+
+
+### Bug Fixes
+
+* update dependencies ([2702606](https://github.com/cicerchie/fsm/commit/2702606b994ea290be835e8f041a2480f1389159))
+
 ## [0.0.5](https://github.com/cicerchie/fsm/compare/v0.0.4...v0.0.5) (2021-08-21)
 
 
